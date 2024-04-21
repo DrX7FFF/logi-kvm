@@ -65,8 +65,11 @@ Id	Type	Time	Length	Hex	Ascii
 
     Ecoute OK sur MX Key via Bolt
     hidapitester --vidpid 046D:C52B --usagePage 0xFF00 --usage 0x0001 -l 7 -t 5000 --open --read-input-forever
-    hidapitester --vidpid 046D:B35B --usage 0x0202 --usagePage 0xff43 --length 30 -t 5000 --open --read-input-forever
-    
+    Ecoute OK sur MX Key via Bluetooth
+    KO hidapitester --vidpid 046D:B35B --usagePage 0xff43 --usage 0x0202 --length 30 -t 5000 --open --read-input-forever
+    KO hidapitester --vidpid 046D:B35B --usagePage 0x0001 --usage 0x0006 --length 30 -t 5000 --open --read-input-forever
+    KO hidapitester --vidpid 046D:B35B --usagePage 0x000C --usage 0x0001 --length 30 -t 5000 --open --read-input-forever
+    KO hidapitester --vidpid 046D:B35B --usagePage 0x0001 --usage 0x0002 --length 30 -t 5000 --open --read-input-forever
 
     busdog pour windows
     https://github.com/djpnewton/busdog
