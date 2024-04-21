@@ -13,6 +13,52 @@ Notes:
     Display number and input name has to be found by try and error.
 
     Default configuration is created in function populate_config
+
+    
+    hisapitester : https://github.com/todbot/hidapitester
+    open cmd shell
+    hidapitester --list
+    MX_ANYWHERE_2S
+    hidapitester --vidpid 046D:B01A --list-detail
+    hidapitester --vidpid 046D:B01A --usagePage 0x0001 --usage 0x0002 -l 11 -t 5000 --open --read-input-forever
+	hidapitester --vidpid 046D:B01A --usagePage 0x0001 --usage 0x0006 -l 11 -t 5000 --open --read-input-forever
+	hidapitester --vidpid 046D:B01A --usagePage 0xFF43 --usage 0x0202 -l 11 -t 5000 --open --read-input-forever
+	--usage 0x0202 --usagePage 0xff43
+    hidapitester.exe --vidpid 046D:B01A --usage 0x0202 --usagePage 0xff43 --open --length 11 --send-output 0x11,0x00,0x0a,0x1e,0x01,0x00,0x00,0x00,0x00,0x00,0x00
+    hidapitester.exe --vidpid 046D:B01A --usage 0x0202 --usagePage 0xff43 --open --length 11 --send-output 0x11,0x00,0x0a,0x1e,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+    hidapitester.exe --vidpid 046D:B01A --usage 0x0202 --usagePage 0xFF43 --open --length 30 --send-output 0x01,0x0e,0x1a,0x00,0x16,0x00,0x04,0x00,0x52,0x39,0x00,0xff,0x08,0x1d,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+	hidapitester.exe --vidpid 046D:B01A --usage 0x0202 --usagePage 0x0002 --open --length 30 --send-output 0x01,0x0e,0x1a,0x00,0x16,0x00,0x04,0x00,0x52,0x39,0x00,0xff,0x08,0x1d,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+	hidapitester.exe --vidpid 046D:B01A --usage 0x0202 --usagePage 0x0006 --open --length 30 --send-output 0x01,0x0e,0x1a,0x00,0x16,0x00,0x04,0x00,0x52,0x39,0x00,0xff,0x08,0x1d,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+
+    hidapitester --vidpid 8086:9D2F --list-detail
+    Id	Type	Time	Length	Hex	Ascii	
+7	Out  (USB URB Function: 9)	0.000257	30	01 0e 1a 00 16 00 04 00 52 39 00 ff 08 1d 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00	........R9....................	
+Id	Type	Time	Length	Hex	Ascii	
+7	In  (USB URB Function: 9)	0.000100	18	01 2e 0e 00 0a 00 04 00 1b 31 00 00 00 03 f0 ff 00 00	.........1........	
+Id	Type	Time	Length	Hex	Ascii	
+7	Out  (USB URB Function: 9)	0.001644	30	01 0e 1a 00 16 00 04 00 52 39 00 ff 08 1d 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00	........R9....................	
+
+    
+    MS_KEY
+    hidapitester --vidpid 046D:C52B --list-detail
+    hidapitester --vidpid 046D:C52B --usagePage 0xFF00 --usage 0x0002 -l 11 -t 5000 --open --read-input-forever
+    hidapitester --vidpid 046D:C52B --usagePage 0xFF00 --usage 0x0001 --open --length 7 --send-output 0x10,0x01,0x09,0x1c,0x01,0x00,0x00
+    hidapitester --vidpid 046D:C52B --usagePage 0xFF00 --usage 0x0001 --open --length 7 --send-output 0x10,0x02,0x09,0x1c,0x01,0x00,0x00
+    hidapitester --vidpid 046D:C52B --usagePage 0xFF00 --usage 0x0001 --open --length 7 --send-output 0x10,0x02,0x09,0x1e,0x01,0x00,0x00
+    hidapitester --vidpid 046D:C52B --usagePage 0xFF00 --usage 0x0001 --open --length 7 --send-output 0x10,0x02,0x09,0x1b,0x01,0x00,0x00
+    KO hidapitester --vidpid 046D:C52B --usagePage 0xFF00 --usage 0x0001 --open --length 7 --send-output 0x10,0x02,0x09,0x1e,0xFF,0x00,0x00
+    
+    busdog pour windows
+    https://github.com/djpnewton/busdog
+    
+    exemple d'appli :
+    https://github.com/marcelhoffs/input-switcher
+    https://github.com/meliksah/lcs
+    
+    Doc Logitech
+    https://github.com/Logitech/cpg-docs/tree/master
+    https://drive.google.com/drive/u/0/folders/0BxbRzx7vEV7eWmgwazJ3NUFfQ28?resourcekey=0-dQ-Lx1FORQl0KAdOHQaE1A
+    
 """
 
 import argparse
@@ -20,6 +66,7 @@ import sys
 import logging
 from logging.handlers import RotatingFileHandler
 import monitorcontrol
+# use pip install hidapi on windows
 import hid
 import json
 
@@ -150,9 +197,11 @@ class UnifyingDevice:
                 # Compare first 5 bytes (0 - 4) and byte 6. Byte 5 contains information about new channel.
                 if (input_bytes[:4] == self.switch_detect_message[:4]) and \
                         (input_bytes[6] == self.switch_detect_message[6]):
+                    print("Yes")
                     for esk in self.easy_switch_keys:
                         if esk == input_bytes[5]:
                             target_channel = self.easy_switch_keys.index(esk)
+                            print(target_channel)
             elif self.dev_type.lower() == 'MX Ergo'.lower():
                 # MX Ergo doesn't send information about switch button event
                 target_channel = -2
@@ -233,6 +282,7 @@ def populate_devices(self_channel):
                     self_channel=self_channel)
 
     j = json.dumps(config, default=lambda o: o.encode(), indent=4)
+    print(j)
     return config
 
 
@@ -268,6 +318,7 @@ def main_loop(self_channel, config_file):
         config = populate_devices(self_channel)
     while True:
         read_bytes = unifying_listen()
+        print(read_bytes)
         for unifying_device in config.unifying_devices:
             channel_number = unifying_device.decode_target_channel_number(read_bytes)
             if channel_number >= 0:
