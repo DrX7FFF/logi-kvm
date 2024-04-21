@@ -40,6 +40,8 @@ Id	Type	Time	Length	Hex	Ascii
 
     
     MS_KEY
+    hidapitester --vidpid 046D:B35B --list-detail
+
     hidapitester --vidpid 046D:C52B --list-detail
     hidapitester --vidpid 046D:C52B --usagePage 0xFF00 --usage 0x0002 -l 11 -t 5000 --open --read-input-forever
     hidapitester --vidpid 046D:C52B --usagePage 0xFF00 --usage 0x0001 --open --length 7 --send-output 0x10,0x01,0x09,0x1c,0x01,0x00,0x00
